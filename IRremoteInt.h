@@ -65,9 +65,6 @@
 #define SYSCLOCK 16000000  // main Arduino clock
 #endif
 
-#define ERR 0
-#define DECODED 1
-
 
 // defines for setting and clearing register bits
 #ifndef cbi
@@ -143,17 +140,16 @@
 
 // information for the interrupt handler
 typedef struct {
-  uint8_t recvpin;           // pin for IR data from detector
-  uint8_t rcvstate;          // state machine
-  uint8_t blinkflag;         // TRUE to enable blinking of pin 13 on IR processing
-  unsigned int timer;     // state timer, counts 50uS ticks.
-  unsigned int rawbuf[RAWBUF]; // raw data
-  uint8_t rawlen;         // counter of entries in rawbuf
+  uint8_t  recvpin;            // pin for IR data from detector
+  uint8_t  rcvstate;           // state machine
+  uint16_t timer;              // state timer, counts 50uS ticks.
+  uint16_t rawbuf[RAWBUF];     // raw data
+  uint8_t  rawlen;             // counter of entries in rawbuf
 } 
 irparams_t;
 
 // Defined in IRremote.cpp
-extern volatile irparams_t irparams;
+extern irparams_t irparams;
 
 // IR detector output is active low
 #define MARK  0
