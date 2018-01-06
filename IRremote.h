@@ -43,7 +43,7 @@ public:
 class IRrecv
 {
 public:
-  IRrecv(int recvpin);
+  IRrecv();
   static bool decode(decode_results *results);
   static void enableIRIn();
 private:

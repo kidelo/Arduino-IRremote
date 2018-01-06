@@ -65,9 +65,8 @@ int MATCH_SPACE(int measured_ticks, int desired_us) {
 }
 #endif
 
-IRrecv::IRrecv(int recvpin)
+IRrecv::IRrecv()
 {
-  irparams.recvpin = recvpin;
 }
 
 // initialization
@@ -92,7 +91,7 @@ void IRrecv::enableIRIn()
   irparams.rawlen = 0;
 
   // set pin modes
-  pinMode(irparams.recvpin, INPUT);
+  pinMode(PIN_IRDA, INPUT);
 }
 
 // TIMER2 interrupt code to collect raw data.
@@ -112,7 +111,7 @@ ISR(TIMER_INTR_NAME)
     return;
   }
 
-  uint8_t irdata = (uint8_t)digitalRead(irparams.recvpin);
+  uint8_t irdata = (uint8_t)digitalRead(PIN_IRDA);
 
   // auto restart
   if (irparams.rawlen >= RAWBUF) {

@@ -138,9 +138,10 @@
 #define STATE_SPACE    4
 #define STATE_STOP     5
 
+#define PIN_IRDA 2
+
 // information for the interrupt handler
 typedef struct {
-  uint8_t  recvpin;            // pin for IR data from detector
   uint8_t  rcvstate;           // state machine
   uint16_t timer;              // state timer, counts 50uS ticks.
   uint16_t rawbuf[RAWBUF];     // raw data
